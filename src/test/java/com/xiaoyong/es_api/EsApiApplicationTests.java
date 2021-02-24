@@ -55,7 +55,7 @@ class EsApiApplicationTests {
     @Test
     void testCreateIndex() throws IOException {
         //1、创建索引请求
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest(ESConstant.ES_INDEX);
+        CreateIndexRequest createIndexRequest = new CreateIndexRequest(ESConstant.ES_JD_GOODS_INDEX);
         //2、客户端执行请求，请求后获得响应
         CreateIndexResponse createIndexResponse = restHighLevelClient.indices().create(createIndexRequest, RequestOptions.DEFAULT);
         System.out.println(createIndexResponse);
