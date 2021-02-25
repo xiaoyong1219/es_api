@@ -1,7 +1,6 @@
 package com.xiaoyong.es_api.controller;
 
 import com.xiaoyong.es_api.service.ContentService;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +24,6 @@ public class ContentController {
     @Autowired
     private ContentService contentService;
 
-    @Autowired
-    private RestHighLevelClient restHighLevelClient;
-
     /**
      * 根据传入的关键字，获取京东页面信息，批量保存到ES索引中
      *
@@ -45,7 +41,7 @@ public class ContentController {
 
 
     /**
-     * 据关键字、分页查询ES文档
+     * 据关键字、分页查询ES文档并且高亮关键字返回
      *
      * @param keyword
      * @param pageNo
@@ -55,8 +51,8 @@ public class ContentController {
      * @return: java.util.List<java.util.Map < java.lang.String, java.lang.Object>>
      */
 
-    @GetMapping("/queryContent/{keyword}/{pageNo}/{pageSize}")
-    public List<Map<String, Object>> queryContent(@PathVariable("keyword") String keyword, @PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) throws IOException {
-        return contentService.queryContent(keyword, pageNo, pageSize);
+    @GetMapping("/search/{keyword}/{pageNo}/{pageSize}")
+    public List<Map<String, Object>> search(@PathVariable("keyword") String keyword, @PathVariable("pageNo") int pageNo, @PathVariable("pageSize") int pageSize) throws IOException {
+        return contentService.searchHighLight(keyword, pageNo, pageSize);
     }
 }
