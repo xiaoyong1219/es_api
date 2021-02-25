@@ -12,11 +12,20 @@ import java.util.ArrayList;
 
 /**
  * Create By dongxiaoyong on /2021/2/24
- * description:
+ * description: 爬取京东搜索页面信息
  *
  * @author dongxiaoyong
  */
 public class HtmlParseUtil {
+
+    /**
+     * 爬取京东搜索页面信息封装成实体列表
+     *
+     * @param keyword
+     * @Author :dongxiaoyong
+     * @Date : 2021/2/25 15:21
+     * @return: java.util.ArrayList<com.xiaoyong.es_api.pojo.Content>
+     */
 
     public static ArrayList<Content> parseJdHtml(String keyword) throws IOException {
         ArrayList<Content> contentArrayList = new ArrayList<>();
